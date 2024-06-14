@@ -1,0 +1,33 @@
+name: init
+
+on:
+  workflow_dispatch:
+  schedule:
+     # You can change this CRON syntax to customize execute interval
+     - cron: "0 */2 * * *"
+
+
+jobs:
+  build:
+    runs-on: ubuntu-latest
+
+    env:
+      fb_tok: ${{ secrets.fb_tok }}
+      git_tok: ${{ secrets.git_tok }}
+      imgbb_tok: ${{ secrets.imgbb_tok }}
+      tenor_tok: ${{ secrets.tenor_tok}}
+      
+    steps:
+    - name: Checkout do repositório
+      uses: actions/checkout@v3
+
+    - name: Configurar Python
+      uses: actions/setup-python@v3
+      with:
+        python-version: 3.11.9
+
+    - name: Instalar httx
+      run: python -m pip install httpx
+
+    - name: Executar script Python
+      run: python main.py

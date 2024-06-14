@@ -10,12 +10,16 @@ import asyncio
 async def test():
     post_ids = await get_post_ids()
     
-
     ids, comments = await get_comments(post_ids)
+    sub_ids, sub_comments = await get_comments(ids)
+    
+    ids.extend(sub_ids)
+    comments.extend(sub_comments)
+    # fazer uma verficação aqui dos ids ja respondidos
     frames = seach_command(ids, comments)
     await git_get_image(frames)
-                                            #[['5', 'frame_500.jpg', '', '379148288497935_432280169616424']]
-    for f in frames:
+                                            
+    for f in frames:         # frames [['5', 'frame_500.jpg', '', '379148288497935_432280169616424']]
         episodio = f[0]
         frame = f[1]
         captions = f[2]
