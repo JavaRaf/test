@@ -12,10 +12,10 @@ jobs:
     runs-on: ubuntu-latest
 
     env:
-      fb_tok: ${{ secrets.fb_tok }}
-      git_tok: ${{ secrets.git_tok }}
-      imgbb_tok: ${{ secrets.imgbb_tok }}
-      tenor_tok: ${{ secrets.tenor_tok}}
+      fb_tok: ${{secrets.fb_tok}}
+      git_tok: ${{secrets.git_tok}}
+      imgbb_tok: ${{secrets.imgbb_tok}}
+      tenor_tok: ${{secrets.tenor_tok}}
       
     steps:
     - name: Checkout do repositório
