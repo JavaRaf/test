@@ -14,7 +14,7 @@ def legendar_image(frame, captions):
         else:
             backgound_size = '0x140' 
     
-        path_dir = './images/'
+        path_dir = 'images/'
         gravity = '-gravity North'
         font =   '-font DejaVu-Sans-Bold'                   #'-font DejaVu-Sans-Bold' for linux
         font_size = '-pointsize 100'                         # '-font Arial-Bold' for windows
