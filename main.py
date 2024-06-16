@@ -4,6 +4,7 @@ from comando_dl import seach_command
 from pegar_image_git import git_get_image
 from legendar_image import legendar_image
 from fb_imgbb_upload import imgBB, armazenar_image_fb, publicar_image_fb
+from carregar_ids import carregar, save_ids_to_txt
 import asyncio
 
 
@@ -11,12 +12,13 @@ async def test():
     post_ids = await get_post_ids()
     
     ids, comments = await get_comments(post_ids)
-    sub_ids, sub_comments = await get_comments(ids)
+    sub_ids, sub_comments = await get_comments(ids) # buscando comentarios dentro de comentarios
     
     ids.extend(sub_ids)
     comments.extend(sub_comments)
-    # fazer uma verficação aqui dos ids ja respondidos
-    frames = seach_command(ids, comments)
+    new_ids, new_comments = carregar(ids, comments) #                  verficação aqui dos ids ja respondidos
+    
+    frames = seach_command(new_ids, new_comments)
     await git_get_image(frames)
                                             
     for f in frames:         # frames [['5', 'frame_500.jpg', '', '379148288497935_432280169616424']]
@@ -41,6 +43,8 @@ async def test():
         
         if estado == True:
             print('comentario respondido com sucesso')
+            save_ids_to_txt(id_comentario)
+            
             
             
         

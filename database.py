@@ -14,7 +14,7 @@ class Data:
     git_username = 'JavaRaf'
     git_repo_name = 'SNF' # nome do repositorio onde estao os frames
     git_branch = 'main' # branch deste repositorio
-    git_this_repo = 'bot2_com-classes'
+    git_this_repo = 'test'
     git_token = os.environ.get('git_tok')
     
     
