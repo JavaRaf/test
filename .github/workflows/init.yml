@@ -3,19 +3,20 @@ name: init
 on:
   workflow_dispatch:
   schedule:
-     # You can change this CRON syntax to customize execute interval
-     - cron: "0 */2 * * *"
-
+    # You can change this CRON syntax to customize execute interval
+    - cron: "0 */2 * * *"
 
 jobs:
   build:
     runs-on: windows-latest
+    concurrency: 
+      group: build-${{ github.ref }}
 
     env:
-      fb_tok: ${{secrets.fb_tok}}
-      git_tok: ${{secrets.git_tok}}
-      imgbb_tok: ${{secrets.imgbb_tok}}
-      tenor_tok: ${{secrets.tenor_tok}}
+      fb_tok: ${{ secrets.fb_tok }}
+      git_tok: ${{ secrets.git_tok }}
+      imgbb_tok: ${{ secrets.imgbb_tok }}
+      tenor_tok: ${{ secrets.tenor_tok }}
       
     steps:
     - name: Checkout do repositório
@@ -26,8 +27,9 @@ jobs:
       with:
         python-version: 3.11.9
   
-    - name: Instalar httx
+    - name: Instalar httpx
       run: python -m pip install httpx
 
     - name: Executar script Python
       run: python main.py
+
