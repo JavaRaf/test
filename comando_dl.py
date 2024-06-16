@@ -32,13 +32,13 @@ def extract_episode_frame(message: str) -> tuple[str, str, str]:
     return episodio, frame, captions
 
 def handle_help_command(id: int) -> None:
-    link_gif = get_random_frieren_gif(tag='Frieren anime')
+    link_gif = get_random_frieren_gif(tag='anime Frieren')
     help_message = HELP_MESSAGE + link_gif
     help(id, help_message)
 
 def handle_gif_command(id: int, message: str) -> None:
     tag = re.findall(r'"(.*?)"', message)
-    tag = tag[0] if tag else 'Frieren anime'
+    tag = tag[0] if tag else 'anime Frieren'
     link_gif = get_random_frieren_gif(tag)
     
     gif_message = f'random gif about {tag} :\n{link_gif}'
