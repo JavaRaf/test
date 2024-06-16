@@ -5,7 +5,8 @@ from pegar_image_git import git_get_image
 from legendar_image import legendar_image
 from fb_imgbb_upload import imgBB, armazenar_image_fb, publicar_image_fb
 from carregar_ids import carregar, save_ids_to_txt
-import asyncio, time, os
+import asyncio, time
+from push_github import git_push_ids
 
 
 async def test():
@@ -56,6 +57,7 @@ async def test():
         if estado == True:
             print('comentario respondido com sucesso')
             save_ids_to_txt(id_comentario)
+            git_push_ids()
             
             
             

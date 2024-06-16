@@ -1,6 +1,8 @@
 import re
 from help import help
+from carregar_ids import save_ids_to_txt
 from tenor_gif import get_random_frieren_gif
+from push_github import git_push_ids
 
 HELP_MESSAGE = (
     "\n\nHelper:\n\n"
@@ -59,8 +61,12 @@ def seach_command(ids: list, comments: list) -> list[str]:
         
         elif ('!dl' in message) and ('-h' in message):
             handle_help_command(id)
+            save_ids_to_txt(id)
+            git_push_ids()
+            
         
         elif message.startswith('!gif'):
             handle_gif_command(id, message)
-    
+            save_ids_to_txt(id)
+            git_push_ids()
     return frames
