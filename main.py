@@ -5,18 +5,30 @@ from pegar_image_git import git_get_image
 from legendar_image import legendar_image
 from fb_imgbb_upload import imgBB, armazenar_image_fb, publicar_image_fb
 from carregar_ids import carregar, save_ids_to_txt
-import asyncio, time
+import asyncio, time, os
 
 
 async def test():
+    
+    inicio = time.time()
+    
     post_ids = await get_post_ids()
     
+    fim = time.time()
+    print(f'Tempo de execução do post_ids foi: {fim - inicio}')
+    
+    inicio2 = time.time()
     ids, comments = await get_comments(post_ids)
+    print('Terminou o get_comments')
     sub_ids, sub_comments = await get_comments(ids) # buscando comentarios dentro de comentarios
+    print('Terminou o sub_comments')
+    fim2 = time.time()
+    
+    print(f'Tempo de execução do get_comments foi: {fim2 - inicio2}')
     
     ids.extend(sub_ids)
     comments.extend(sub_comments)
-    new_ids, new_comments = carregar(ids, comments) #                  verficação aqui dos ids ja respondidos
+    new_ids, new_comments = carregar(ids, comments) #  verficação aqui dos ids ja respondidos
     
     frames = seach_command(new_ids, new_comments)
     await git_get_image(frames)

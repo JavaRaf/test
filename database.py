@@ -1,4 +1,5 @@
-import os
+import os, httpx
+
 
 
 class Data:
@@ -8,7 +9,7 @@ class Data:
     fb_access_token = os.environ.get('fb_tok')
     fb_version = 'v19.0'
     fb_url = f'https://graph.facebook.com/{fb_version}'
-    
+    page_id =  136437712888196
     
     #github
     git_username = 'JavaRaf'
@@ -28,4 +29,4 @@ class Data:
 
     #othes 
     init = 0   # usado para pegar os posts_ids
-    max = 30  # cada interação pega no maximo 50 comentarios por post
+    max = 10  # cada interação pega no maximo 50 comentarios por post

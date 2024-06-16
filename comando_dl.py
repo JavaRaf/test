@@ -48,7 +48,11 @@ def seach_command(ids: list, comments: list) -> list[str]:
     frames = []
 
     for id, message in zip(ids, comments):
+        
         if ('!dl' in message) and ('-e' in message) and ('-f' in message):
+            
+            print('comands:', message)
+            
             episodio, frame, captions = extract_episode_frame(message)
             if episodio and frame:
                 frames.append([episodio, frame, captions, id])

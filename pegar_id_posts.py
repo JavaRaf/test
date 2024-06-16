@@ -1,6 +1,6 @@
 from database import Data
-import httpx
-import asyncio
+import httpx, asyncio
+
 
 async def get_post_ids() -> list[str]:
     post_ids = []
@@ -8,7 +8,7 @@ async def get_post_ids() -> list[str]:
 
     while Data.init < Data.max:
         async with httpx.AsyncClient() as session:
-            response = await session.get(f'{Data.fb_url}/me/posts/', params=dados)
+            response = await session.get(f'{Data.fb_url}/{Data.page_id}/posts/', params=dados)
             if response.status_code == 200:
                 response_data = response.json()
                 
@@ -23,7 +23,12 @@ async def get_post_ids() -> list[str]:
                 else:
                     break
             else:
+                print('error: loop qubrado')
                 break  # se a resposta não for 200, interrompe o loop
-                                            
+    
+    Data.init = 0                             
     return post_ids
+        
+
+
 

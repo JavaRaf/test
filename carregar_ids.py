@@ -1,33 +1,34 @@
 
 
 
-
 def carregar(ids_to_check, comments_to_check):
+    if len(ids_to_check) != len(comments_to_check):
+        print("A lista de IDs e a lista de comentários devem ter o mesmo comprimento.")
+        return [], []
+    
     try:
         with open('responded_ids.txt', 'r') as file:
-            # Ler todos os IDs do arquivo e remover espaços em branco e novas linhas
             ids_in_file = {line.strip() for line in file.readlines()}
 
-        # Identificar os IDs que não estão no arquivo
         ids_not_in_file = []
         comments_not_in_file = []
         
-        if ids_to_check and comments_to_check:
-            for ids, comments in zip(ids_to_check, comments_to_check):
-                if ids not in ids_in_file:
-                    ids_not_in_file.append(ids)
-                    comments_not_in_file.append(comments)
+        for ids, comments in zip(ids_to_check, comments_to_check):
+            if ids not in ids_in_file:
+                ids_not_in_file.append(ids)
+                comments_not_in_file.append(comments)
                        
-            return ids_not_in_file, comments_not_in_file
+        return ids_not_in_file, comments_not_in_file
     
     except FileNotFoundError:
-        with open('responded_ids.txt', 'w'):
+        with open('responded_ids.txt', 'w') as file:
             print('criando o arquivo responded_ids.txt')
         
-        return []
+        return [], []
     
     except Exception as e:
         print(f"Ocorreu um erro: {e}")
+        return [], []
 
 def save_ids_to_txt(id_comentario):
     try:

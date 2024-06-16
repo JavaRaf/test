@@ -22,7 +22,7 @@ async def get_comments(new_ids: list[str]) -> tuple[list[str], list[str]]:
     comments_ids = []
     messages = []
 
-    semaphore = asyncio.Semaphore(10)  # Limite de 10 requisições simultâneas
+    semaphore = asyncio.Semaphore(100)  # Limite de 100 requisições simultâneas
 
     async with httpx.AsyncClient() as session:
         tasks = [fetch_comments(session, post_id, semaphore) for post_id in new_ids]
@@ -34,5 +34,4 @@ async def get_comments(new_ids: list[str]) -> tuple[list[str], list[str]]:
                     comments_ids.append(item['id'])
                     messages.append(item['message'])
 
-    print('Terminou o get_comments')
     return comments_ids, messages
