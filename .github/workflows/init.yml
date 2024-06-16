@@ -25,6 +25,13 @@ jobs:
       uses: actions/setup-python@v3
       with:
         python-version: 3.11.9
+    
+    
+    - name: image magick
+      run: magick identify -version
+      
+    - name: segunda forma  
+      run: convert -version
 
     - name: Instalar httx
       run: python -m pip install httpx

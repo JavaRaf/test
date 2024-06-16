@@ -5,7 +5,7 @@ from pegar_image_git import git_get_image
 from legendar_image import legendar_image
 from fb_imgbb_upload import imgBB, armazenar_image_fb, publicar_image_fb
 from carregar_ids import carregar, save_ids_to_txt
-import asyncio
+import asyncio, time
 
 
 async def test():
@@ -47,12 +47,11 @@ async def test():
             
             
             
-        
-
-    
 
 def main():
-    asyncio.run(test())
+    start_time = time.time()
+    while (time.time() - start_time) < 7200:
+        asyncio.run(test())
 
-
+        time.sleep(40)
 main()
