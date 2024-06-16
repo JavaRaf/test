@@ -9,7 +9,12 @@ class Data:
     fb_access_token = os.environ.get('fb_tok')
     fb_version = 'v19.0'
     fb_url = f'https://graph.facebook.com/{fb_version}'
-    page_id =  136437712888196
+    
+    #get_page_id
+    response = httpx.get(f'{fb_url}/me?access_token={fb_access_token}')
+    page_id = response.json().get('id')
+    
+    
     
     #github
     git_username = 'JavaRaf'
@@ -18,7 +23,6 @@ class Data:
     git_this_repo = 'test'
     git_token = os.environ.get('git_tok')
     
-    
     #tenor gifs
     tenor_token = os.environ.get('gif_tok')
 
@@ -26,7 +30,6 @@ class Data:
     img_url = 'https://api.imgbb.com/1/upload' 
     img_token = os.environ.get('imgbb_tok')
 
-
     #othes 
     init = 0   # usado para pegar os posts_ids
-    max = 10  # cada interação pega no maximo 50 comentarios por post
+    max = 5  # cada interação pega no maximo 50 comentarios por post
