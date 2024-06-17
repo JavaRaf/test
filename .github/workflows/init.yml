@@ -16,7 +16,7 @@ jobs:
       fb_tok: ${{ secrets.FB_TOK }}
       git_tok: ${{ secrets.GIT_TOK }}
       imgbb_tok: ${{ secrets.IMGBB_TOK }}
-      tenor_tok: ${{ secrets.GIF_TOK }}
+      gif_tok: ${{ secrets.GIF_TOK }}
       
     steps:
     - name: Checkout do repositório
