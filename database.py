@@ -32,4 +32,4 @@ class Data:
 
     #othes 
     init = 0   # usado para pegar os posts_ids
-    max = 5  # cada interação pega no maximo 50 comentarios por post
+    max = 7  # cada interação pega no maximo 50 comentarios por post

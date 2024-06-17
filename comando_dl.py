@@ -59,7 +59,7 @@ def seach_command(ids: list, comments: list) -> list[str]:
             if episodio and frame:
                 frames.append([episodio, frame, captions, id])
         
-        elif ('!dl' in message) and ('-h' in message) or ('!dl'):
+        elif ('!dl' in message) and ('-h' in message):
             handle_help_command(id)
             save_ids_to_txt(id)
             git_push_ids()
@@ -69,4 +69,5 @@ def seach_command(ids: list, comments: list) -> list[str]:
             handle_gif_command(id, message)
             save_ids_to_txt(id)
             git_push_ids()
+            
     return frames
