@@ -27,6 +27,7 @@ def get_random_frieren_gif(tag):
                 print("Nenhum GIF encontrado para o termo de busca.")
         else:
             print(f"A requisição falhou com status code: {response.status_code}")
+            print(response.content)
 
     except httpx.RequestError as e:
         print(f"Erro ao fazer requisição HTTP: {e}")

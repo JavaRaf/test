@@ -31,7 +31,13 @@ async def get_comments(new_ids: list[str]) -> tuple[list[str], list[str]]:
         for response_data in responses:
             if 'data' in response_data:
                 for item in response_data['data']:
+                    
                     comments_ids.append(item['id'])
                     messages.append(item['message'])
+                    
+                    
+                        
+                        
+                        
 
     return comments_ids, messages

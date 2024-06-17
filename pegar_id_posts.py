@@ -2,7 +2,7 @@ from database import Data
 import httpx, asyncio
 
 
-async def get_post_ids() -> list[str]:
+async def get_post_ids():
     post_ids = []
     dados = {'limit': '100', 'access_token': Data.fb_access_token}
 
@@ -29,6 +29,4 @@ async def get_post_ids() -> list[str]:
     Data.init = 0                             
     return post_ids
         
-
-
 
