@@ -12,7 +12,7 @@ def legendar_image(frame, captions):
             captions = ' '.join(partes)
             backgound_size = '0x260'
         else:
-            backgound_size = '0x140' 
+            backgound_size = '0x150' 
     
         path_dir = './images/'
         gravity = '-gravity North'
