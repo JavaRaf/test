@@ -51,23 +51,25 @@ def seach_command(ids: list, comments: list) -> list[str]:
 
     for id, message in zip(ids, comments):
         
-        if ('!dl' in message) and ('-e' in message) and ('-f' in message):
-            
-            print('comands:', message)
-            
-            episodio, frame, captions = extract_episode_frame(message)
-            if episodio and frame:
-                frames.append([episodio, frame, captions, id])
+        if message.startswith('!'):
         
-        elif ('!dl' in message) and ('-h' in message):
-            handle_help_command(id)
-            save_ids_to_txt(id)
-            git_push_ids()
+            if ('!dl' in message) and ('-e' in message) and ('-f' in message):
+                
+                print('comands:', message)
+                
+                episodio, frame, captions = extract_episode_frame(message)
+                if episodio and frame:
+                    frames.append([episodio, frame, captions, id])
             
-        
-        elif message.startswith('!gif'):
-            handle_gif_command(id, message)
-            save_ids_to_txt(id)
-            git_push_ids()
+            elif ('!dl' in message) and ('-h' in message):
+                handle_help_command(id)
+                save_ids_to_txt(id)
+                git_push_ids()
+                
+            
+            elif message.startswith('!gif'):
+                handle_gif_command(id, message)
+                save_ids_to_txt(id)
+                git_push_ids()
             
     return frames
