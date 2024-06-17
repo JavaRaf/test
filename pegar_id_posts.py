@@ -8,7 +8,7 @@ async def get_post_ids():
 
     while Data.init < Data.max:
         async with httpx.AsyncClient() as session:
-            response = await session.get(f'{Data.fb_url}/{Data.page_id}/posts/', params=dados)
+            response = await session.get(f'{Data.fb_url}/{Data.page_id}/posts/', params=dados, timeout=20)
             if response.status_code == 200:
                 response_data = response.json()
                 
