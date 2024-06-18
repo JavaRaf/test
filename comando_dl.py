@@ -43,7 +43,7 @@ def handle_gif_command(id: int, message: str) -> None:
     tag = tag[0] if tag else 'anime Frieren'
     link_gif = get_random_frieren_gif(tag)
     
-    gif_message = f'random gif about {tag} :\n{link_gif}'
+    gif_message = f'Random gif about {tag} :\n{link_gif}'
     help(id, gif_message)
 
 def seach_command(ids: list, comments: list) -> list[str]:
