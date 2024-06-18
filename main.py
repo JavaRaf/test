@@ -13,11 +13,11 @@ async def test():
     
     inicio = time.time()
     
-    post_ids = await get_post_ids()
+    post_ids = get_post_ids()
     
     fim = time.time()
-    print(f'Tempo de execução do post_ids foi: {fim - inicio}')
-    
+    print(f'Tempo de execução do post_ids foi: {fim - inicio:.2f} segundos')
+
     inicio2 = time.time()
     ids, comments = await get_comments(post_ids)
     print('Terminou o get_comments')
@@ -25,7 +25,7 @@ async def test():
     print('Terminou o sub_comments')
     fim2 = time.time()
     
-    print(f'Tempo de execução do get_comments foi: {fim2 - inicio2}')
+    print(f'Tempo de execução do get_comments foi: {fim2 - inicio2:.2f} segundos')
     
     ids.extend(sub_ids)
     comments.extend(sub_comments)
