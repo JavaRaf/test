@@ -51,7 +51,7 @@ def seach_command(ids: list, comments: list) -> list[str]:
 
     for id, message in zip(ids, comments):
         
-        if message.startswith('!'):
+        if message.replace(' ', '').startswith('!'):
         
             if ('!dl' in message) and ('-e' in message) and ('-f' in message):
                 
@@ -67,7 +67,7 @@ def seach_command(ids: list, comments: list) -> list[str]:
                 git_push_ids()
                 
             
-            elif message.startswith('!gif'):
+            elif message.lower().startswith('!gif'):
                 handle_gif_command(id, message)
                 save_ids_to_txt(id)
                 git_push_ids()
