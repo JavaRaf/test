@@ -6,7 +6,7 @@ class Data:
     
     
     #facebook
-    fb_access_token = os.environ.get('fb_tok')
+    fb_tok = os.environ.get('FB_TOK')
     fb_version = 'v19.0'
     fb_url = f'https://graph.facebook.com/{fb_version}'
     
@@ -16,14 +16,14 @@ class Data:
     git_repo_name = 'SNF' # nome do repositorio onde estao os frames
     git_branch = 'main' # branch deste repositorio
     git_this_repo = 'test'
-    git_token = os.environ.get('git_tok')
+    git_token = os.environ.get('GIT_TOK')
     
     #tenor gifs
-    tenor_token = os.environ.get('gif_tok')
+    gif_tok = os.environ.get('GIF_TOK')
 
     #imgBB
     img_url = 'https://api.imgbb.com/1/upload' 
-    img_token = os.environ.get('imgbb_tok')
+    imgbb_tok = os.environ.get('IMGBB_TOK')
 
     #othes 
     init = 0   # usado para pegar os posts_ids

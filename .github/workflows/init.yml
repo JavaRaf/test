@@ -13,10 +13,10 @@ jobs:
       group: build-${{ github.ref }}
 
     env:
-      fb_tok: ${{ secrets.FB_TOK }}
-      git_tok: ${{ secrets.GIT_TOK }}
-      imgbb_tok: ${{ secrets.IMGBB_TOK }}
-      gif_tok: ${{ secrets.GIF_TOK }}
+      FB_TOK: ${{ secrets.FB_TOK }}
+      GIT_TOK: ${{ secrets.GIT_TOK }}
+      IMGBB_TOK: ${{ secrets.IMGBB_TOK }}
+      GIF_TOK: ${{ secrets.GIF_TOK }}
 
     steps:
     - name: Checkout do repositório

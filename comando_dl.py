@@ -62,12 +62,18 @@ def seach_command(ids: list, comments: list) -> list[str]:
                     frames.append([episodio, frame, captions, id])
             
             elif ('!dl' in message) and ('-h' in message):
+                
+                print('comands:', message)
+                
                 handle_help_command(id)
                 save_ids_to_txt(id)
                 git_push_ids()
                 
             
             elif message.lower().startswith('!gif'):
+                
+                print('comands:', message)
+                
                 handle_gif_command(id, message)
                 save_ids_to_txt(id)
                 git_push_ids()
