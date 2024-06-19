@@ -6,7 +6,7 @@ def help(id_comentario, message):
 
     data = {
        'message': message,
-       'access_token': Data.fb_access_token  
+       'access_token': Data.fb_tok  
     }
     
     try:
