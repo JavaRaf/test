@@ -6,9 +6,13 @@ def get_post_ids():
     post_ids = []
     dados = {'limit': '100', 'access_token': Data.fb_access_token}
     
+    #get_page_id
+    response = httpx.get(f'{Data.fb_url}/me?access_token={Data.fb_access_token}')
+    page_id = response.json().get('id')
+    
     try:
         while Data.init < Data.max:
-            response = httpx.get(f'{Data.fb_url}/{Data.page_id}/posts/', params=dados, timeout=15)
+            response = httpx.get(f'{Data.fb_url}/{page_id}/posts/', params=dados, timeout=15)
             
             if response.status_code == 200:
                 response_data = response.json()

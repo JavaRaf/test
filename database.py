@@ -10,12 +10,7 @@ class Data:
     fb_version = 'v19.0'
     fb_url = f'https://graph.facebook.com/{fb_version}'
     
-    #get_page_id
-    response = httpx.get(f'{fb_url}/me?access_token={fb_access_token}')
-    page_id = response.json().get('id')
-    
-    
-    
+
     #github
     git_username = 'JavaRaf'
     git_repo_name = 'SNF' # nome do repositorio onde estao os frames
