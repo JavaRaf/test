@@ -51,7 +51,7 @@ def seach_command(ids: list, comments: list) -> list[str]:
 
     for id, message in zip(ids, comments):
         
-        if message.replace(' ', '').startswith('!'):
+        if ('Helper:' not in message):
         
             if ('!dl' in message) and ('-e' in message) and ('-f' in message):
                 
