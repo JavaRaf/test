@@ -22,6 +22,18 @@ jobs:
     - name: Checkout do repositório
       uses: actions/checkout@v3
 
+    - name: Instalar Chocolatey
+      run: |
+        Set-ExecutionPolicy Bypass -Scope Process -Force; \
+        [System.Net.ServicePointManager]::SecurityProtocol = [System.Net.ServicePointManager]::SecurityProtocol -bor 3072; \
+        iex ((New-Object System.Net.WebClient).DownloadString('https://community.chocolatey.org/install.ps1'))
+
+    - name: Instalar speedtest-cli
+      run: choco install speedtest
+
+    - name: Executar speedtest
+      run: speedtest
+
     - name: Configurar Python
       uses: actions/setup-python@v3
       with:
@@ -32,4 +44,5 @@ jobs:
 
     - name: Executar script Python
       run: python main.py
+
 
