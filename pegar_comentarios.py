@@ -7,7 +7,7 @@ import asyncio
 import httpx
 
 async def fetch_comments(session: httpx.AsyncClient, post_id: str, semaphore: asyncio.Semaphore) -> dict:
-    url = f'{Data.fb_url}/{post_id}/comments?limit=50&access_token={Data.fb_access_token}'
+    url = f'{Data.fb_url}/{post_id}/comments?limit=50&access_token={Data.fb_tok}'
     async with semaphore:
         try:
             response = await session.get(url, timeout=20)

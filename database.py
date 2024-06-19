@@ -16,7 +16,7 @@ class Data:
     git_repo_name = 'SNF' # nome do repositorio onde estao os frames
     git_branch = 'main' # branch deste repositorio
     git_this_repo = 'test'
-    git_token = os.environ.get('GIT_TOK')
+    git_tok = os.environ.get('GIT_TOK')
     
     #tenor gifs
     gif_tok = os.environ.get('GIF_TOK')

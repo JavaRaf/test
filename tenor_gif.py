@@ -7,7 +7,7 @@ import random
 def get_random_frieren_gif(tag):
      
     # URL da API para busca de GIFs
-    url = f"https://tenor.googleapis.com/v2/search?q={tag}&key={Data.tenor_token}&client_key=my_test_app&limit=50"
+    url = f"https://tenor.googleapis.com/v2/search?q={tag}&key={Data.gif_tok}&client_key=my_test_app&limit=50"
 
     try:
         # Fazendo a requisição HTTP

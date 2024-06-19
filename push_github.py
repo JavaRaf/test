@@ -15,7 +15,7 @@ def git_push_ids():
         subprocess.run('git add responded_ids.txt', shell=True, check=True)
 
         subprocess.run('git commit -m "update responded_ids.txt"', shell=True, check=True)
-        subprocess.run(f'git push -u https://{Data.git_username}:{Data.git_token}@github.com/{Data.git_username}/{Data.git_this_repo} {Data.git_branch}', shell=True, check=True)
+        subprocess.run(f'git push -u https://{Data.git_username}:{Data.git_tok}@github.com/{Data.git_username}/{Data.git_this_repo} {Data.git_branch}', shell=True, check=True)
 
     except subprocess.CalledProcessError as e:
         print(e)

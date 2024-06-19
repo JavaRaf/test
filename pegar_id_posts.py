@@ -4,10 +4,10 @@ import httpx
 
 def get_post_ids():
     post_ids = []
-    dados = {'limit': '100', 'access_token': Data.fb_access_token}
+    dados = {'limit': '100', 'access_token': Data.fb_tok}
     
     #get_page_id
-    response = httpx.get(f'{Data.fb_url}/me?access_token={Data.fb_access_token}')
+    response = httpx.get(f'{Data.fb_url}/me?access_token={Data.fb_tok}')
     page_id = response.json().get('id')
     
     try:
