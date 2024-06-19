@@ -8,7 +8,7 @@ def imgBB(frame):
     try:
         
         frame_name = frame.replace('.jpg', '')
-        data = {'key': Data.img_token, 'name': f'{frame_name}', 'expiration': 600000}
+        data = {'key': Data.imgbb_tok, 'name': f'{frame_name}', 'expiration': 600000}
 
         with open(f'images/{frame}', 'rb') as file:
             files = {'image': file}
@@ -37,7 +37,7 @@ def armazenar_image_fb(path_to_frame: str):
             
             data = {
                 'published': 'false',
-                'access_token': Data.fb_access_token
+                'access_token': Data.fb_tok
             }
             
             response = httpx.post(f'{Data.fb_url}/me/photos', files=files, data=data, timeout=10)
@@ -65,7 +65,7 @@ def publicar_image_fb(episodio: str, frame: str, link: str, foto_id: str, id_com
     data = {
         'message': message,
         'attachment_id': foto_id,
-        'access_token': Data.fb_access_token
+        'access_token': Data.fb_tok
     }
     response = httpx.post(f'{Data.fb_url}/{id_comentario}/comments', data=data, timeout=10)
    
