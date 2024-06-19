@@ -35,7 +35,7 @@ jobs:
 
     - name: Executar speedtest
       shell: pwsh
-      run: speedtest
+      run: speedtest --accept-license
 
     - name: Configurar Python
       uses: actions/setup-python@v3
@@ -47,6 +47,3 @@ jobs:
 
     - name: Executar script Python
       run: python main.py
-
-
-
