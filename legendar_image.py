@@ -16,7 +16,7 @@ def legendar_image(frame, captions):
     
         path_dir = './images/'
         gravity = '-gravity North'
-        font =   '-font Cooper Black'                   #'-font DejaVu-Sans-Bold' for linux
+        font =   '-font Cooper Black'                        #'-font DejaVu-Sans-Bold' for linux
         font_size = '-pointsize 100'                         # '-font Arial-Bold' for windows
         backgound_color = '-background White'
         splice = f'-splice {backgound_size}'
