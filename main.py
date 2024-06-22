@@ -66,5 +66,5 @@ def main():
     while (time.time() - start_time) < (35 * 60):
         asyncio.run(test())
 
-        time.sleep(30)
+        time.sleep(50)
 main()
