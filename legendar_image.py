@@ -23,5 +23,5 @@ def legendar_image(frame, captions):
         annotate = '-annotate +0+20'
         output_name = f'./images/s{frame}'
         
-        subprocess.run(f'magick convert {path_dir}{frame} {gravity} {backgound_color} {splice} {font} {font_size} {annotate} "{captions}" {output_name}')
+        subprocess.run(f'magick {path_dir}{frame} {gravity} {backgound_color} {splice} {font} {font_size} {annotate} "{captions}" {output_name}')
                         #magick for windows
