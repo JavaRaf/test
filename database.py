@@ -14,7 +14,7 @@ class Data:
     #github
     git_username = 'JavaRaf'
     git_repo_name = 'SNF' # nome do repositorio onde estao os frames
-    git_branch = 'main' # branch deste repositorio
+    git_this_branch = 'main' # branch deste repositorio
     git_this_repo = 'test'
     git_tok = os.environ.get('GIT_TOK')
     
@@ -27,4 +27,4 @@ class Data:
 
     #othes 
     init = 0   # usado para pegar os posts_ids
-    max = 3  # cada interação pega no maximo 50 comentarios por post
+    max = 3  # cada interação pega no maximo 100 comentarios por post

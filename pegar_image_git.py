@@ -18,7 +18,7 @@ async def git_get_image(frames):
             frame = item[1]
 
             if episodio and frame:
-                url = f'https://raw.githubusercontent.com/{Data.git_username}/{Data.git_repo_name}/{Data.git_branch}/{episodio}/{frame}'
+                url = f'https://raw.githubusercontent.com/{Data.git_username}/{Data.git_repo_name}/{Data.git_this_branch}/{episodio}/{frame}'
                 tasks.append(git_fetch_image(session, url, frame))
                 
         await asyncio.gather(*tasks)

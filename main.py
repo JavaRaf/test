@@ -13,25 +13,25 @@ async def test():
     
     inicio = time.time()
     
-    post_ids = get_post_ids()
+    comments_ids, comments = get_post_ids()
     
     fim = time.time()
-    print(f'Tempo de execução do post_ids foi: {fim - inicio:.2f} segundos')
+    print(f'Tempo de execução do post_ids foi: {fim - inicio:.2f} segundos\n')
 
     inicio2 = time.time()
-    ids, comments = await get_comments(post_ids)
-    print('Terminou o get_comments')
-    sub_ids, sub_comments = await get_comments(ids) # buscando comentarios dentro de comentarios
-    print('Terminou o sub_comments')
+    ids, sub_comments = await get_comments(comments_ids)
+    print('Terminou o get_comments\n')
+
     fim2 = time.time()
     
-    print(f'Tempo de execução do get_comments foi: {fim2 - inicio2:.2f} segundos')
+    print(f'Tempo de execução do get_comments foi: {fim2 - inicio2:.2f} segundos\n')
     
-    ids.extend(sub_ids)
+    comments_ids.extend(ids)
     comments.extend(sub_comments)
-    new_ids, new_comments = carregar(ids, comments) #  verficação aqui dos ids ja respondidos
     
-    frames = seach_command(new_ids, new_comments)
+    new_comments_ids, new_comments = carregar(comments_ids, comments) #  verficação dos ids ja respondidos
+    
+    frames = seach_command(new_comments_ids, new_comments)
     await git_get_image(frames)
                                             
     for f in frames:         # frames [['5', 'frame_500.jpg', '', '379148288497935_432280169616424']]
@@ -63,7 +63,7 @@ async def test():
             
 def main():
     start_time = time.time()
-    while (time.time() - start_time) < (35 * 60):
+    while (time.time() - start_time) < (120 * 60):
         asyncio.run(test())
 
         time.sleep(50)
