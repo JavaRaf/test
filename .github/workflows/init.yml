@@ -28,7 +28,7 @@ jobs:
         python-version: 3.11.9
         architecture: x64  
 
-    - name: Instalar a fonte COOPBL.TTF
+    - name: Instalar a fonte Cooper-Black.TTF
       run: |
         copy font\COOPBL.TTF C:\Windows\Fonts
 
