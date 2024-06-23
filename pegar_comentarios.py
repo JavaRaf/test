@@ -2,10 +2,6 @@ from database import Data
 import asyncio
 import httpx
 
-
-import asyncio
-import httpx
-
 async def fetch_comments(session: httpx.AsyncClient, post_id: str, semaphore: asyncio.Semaphore) -> dict:
     url = f'{Data.fb_url}/{post_id}/comments?limit=50&access_token={Data.fb_tok}'
     async with semaphore:
@@ -26,7 +22,7 @@ async def get_comments(new_ids: list[str]) -> tuple[list[str], list[str]]:
     comments_ids = []
     messages = []
 
-    semaphore = asyncio.Semaphore(100)  # Limit of 50 concurrent requests
+    semaphore = asyncio.Semaphore(100)  # Limit of 100 concurrent requests
 
     async with httpx.AsyncClient() as session:
         tasks = [fetch_comments(session, post_id, semaphore) for post_id in new_ids]
@@ -35,8 +31,9 @@ async def get_comments(new_ids: list[str]) -> tuple[list[str], list[str]]:
         for response_data in responses:
             if isinstance(response_data, dict) and 'data' in response_data:
                 for item in response_data['data']:
-                    comments_ids.append(item.get('id', ''))
-                    messages.append(item.get('message', ''))
+                    if item:
+                        comments_ids.append(item.get('id', ''))
+                        messages.append(item.get('message', ''))
 
     return comments_ids, messages
 

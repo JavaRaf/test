@@ -21,8 +21,9 @@ HELP_MESSAGE = (
 
 def extract_episode_frame(message: str) -> tuple[str, str, str]:
     episodio, frame, captions = '', '', ''
-    numeros = re.findall(r'\d+', message)
+    primeriros_dois_numeros = re.findall(r'\d+', message)
     
+    numeros = primeriros_dois_numeros[:2]
     if len(numeros) == 2:
         episodio = numeros[0]
         frame = f'frame_{numeros[1]}.jpg'

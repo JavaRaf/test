@@ -24,11 +24,11 @@ def get_post_ids():
                 
                 for item in response_data.get('data', []):
                     comments_data = item.get('comments', {}).get('data', [])
-                    
-                    for comment in comments_data:
-                        if 'id' in comment:
-                            comments.append(comment.get('message'))
-                            comments_ids.append(comment.get('id'))
+                    if len(comments_data) >= 1:
+                        for comment in comments_data:
+                            if 'id' in comment:
+                                comments.append(comment.get('message'))
+                                comments_ids.append(comment.get('id'))
                 
                 # Check for pagination
                 if 'paging' in response_data and 'next' in response_data['paging']:
