@@ -9,8 +9,6 @@ on:
 jobs:
   build:
     runs-on: windows-latest
-    concurrency:
-      group: build-${{ github.ref }}
 
     env:
       FB_TOK: ${{ secrets.FB_TOK }}
@@ -34,3 +32,11 @@ jobs:
 
     - name: Executar script Python
       run: python main.py
+
+    - name: auto init
+      run: |
+        curl -X POST \
+        -H "Accept: application/vnd.github.v3+json" \
+        -H "Authorization: token ${{ secrets.GITHUB_TOKEN }}" \
+        https://api.github.com/repos/${{ github.repository }}/actions/workflows/init.yml/dispatches \
+        -d '{"ref":"main"}'
