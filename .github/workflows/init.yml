@@ -30,7 +30,7 @@ jobs:
 
     - name: Instalar a fonte Cooper-Black.TTF
       run: |
-        copy font\COOPBL.TTF C:\Windows\Fonts
+        copy font\Cooper-Black.TTF C:\Windows\Fonts
 
     - name: Instalar Dependências
       run: |
