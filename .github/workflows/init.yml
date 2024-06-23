@@ -30,7 +30,6 @@ jobs:
 
     - name: Instalar a fonte COOPBL.TTF
       run: |
-        mkdir -p C:\Windows\Fonts
         copy font\COOPBL.TTF C:\Windows\Fonts
 
     - name: Instalar Dependências
