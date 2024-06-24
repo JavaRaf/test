@@ -2,9 +2,9 @@ name: init
 
 on:
   workflow_dispatch:
-  schedule:
+  #schedule:
     # You can change this CRON syntax to customize execute interval
-    - cron: "*/5 * * * *"    # - cron: "0 */2 * * *" 2 horas
+    # - cron: "0 */2 * * *" 
 
 jobs:
   build:
