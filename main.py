@@ -63,7 +63,7 @@ async def test():
             
 def main():
     start_time = time.time()
-    while (time.time() - start_time) < (120 * 60):
+    while (time.time() - start_time) < (180 * 60):
         asyncio.run(test())
 
         time.sleep(50)
