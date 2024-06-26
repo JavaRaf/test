@@ -16,7 +16,7 @@ def get_post_ids():
         print(f"Failed to get page ID: {response.status_code}") 
         return
     
-    dados = {'fields': 'comments.limit(50)', 'limit': '100', 'access_token': Data.fb_tok}
+    dados = {'fields': 'comments.limit(100)', 'limit': '100', 'access_token': Data.fb_tok}
     try:
         
         while Data.init < Data.max:
