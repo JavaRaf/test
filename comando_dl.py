@@ -62,7 +62,7 @@ def seach_command(ids: list, comments: list) -> list[str]:
                 if episodio and frame:
                     frames.append([episodio, frame, captions, id])
             
-            elif ('!dl' in message) and ('-h' in message):
+            elif message.startswith('!dl') and '-h' in message:
                 
                 print('comands:', message)
                 
