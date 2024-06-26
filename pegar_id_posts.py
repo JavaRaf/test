@@ -6,6 +6,8 @@ def get_post_ids():
     comments_ids = []
     comments = []
     
+    # "136437712888196_122186265332068249" id do post de download
+    
     # Get page ID
     response = httpx.get(f'{Data.fb_url}/me?access_token={Data.fb_tok}')
     if response.status_code == 200:
