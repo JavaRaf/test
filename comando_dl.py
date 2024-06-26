@@ -62,6 +62,15 @@ def seach_command(ids: list, comments: list) -> list[str]:
                 if episodio and frame:
                     frames.append([episodio, frame, captions, id])
             
+
+            elif message.lower().startswith('!gif'):
+                
+                print('comands:', message)
+                
+                handle_gif_command(id, message)
+                save_ids_to_txt(id)
+                git_push_ids()
+                
             elif message.startswith('!dl') and '-h' in message:
                 
                 print('comands:', message)
@@ -70,13 +79,5 @@ def seach_command(ids: list, comments: list) -> list[str]:
                 save_ids_to_txt(id)
                 git_push_ids()
                 
-            
-            elif message.lower().startswith('!gif'):
-                
-                print('comands:', message)
-                
-                handle_gif_command(id, message)
-                save_ids_to_txt(id)
-                git_push_ids()
             
     return frames
