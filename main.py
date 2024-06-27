@@ -66,5 +66,7 @@ def main():
     while (time.time() - start_time) < (180 * 60):
         asyncio.run(test())
 
+        print('esperando 50 segundos')
         time.sleep(50)
+        
 main()
