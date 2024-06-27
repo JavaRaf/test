@@ -66,5 +66,7 @@ def main():
     while (time.time() - start_time) < (180 * 60):
         asyncio.run(test())
 
-        time.sleep(50)
+        for i in range(1, 51):
+            time.sleep(1)
+            print(f'esperado {i}')
 main()

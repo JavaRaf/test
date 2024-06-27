@@ -1,6 +1,7 @@
 from database import Data
 import asyncio
 import httpx
+import time
 
 async def fetch_comments(session: httpx.AsyncClient, post_id: str, semaphore: asyncio.Semaphore) -> dict:
     url = f'{Data.fb_url}/{post_id}/comments?limit=50&access_token={Data.fb_tok}'
@@ -11,11 +12,14 @@ async def fetch_comments(session: httpx.AsyncClient, post_id: str, semaphore: as
             return response.json()
         except httpx.HTTPStatusError as exc:
             print(f"HTTP error occurred for post_id {post_id}: {exc}")
+            time.sleep(10)
         except asyncio.CancelledError:
             print(f"Request for post_id {post_id} was cancelled.")
+            time.sleep(10)
             raise  # Re-raise the CancelledError to propagate it
         except Exception as exc:
             print(f"An error occurred for post_id {post_id}: {exc}")
+            time.sleep(10)
         return {}  # Return an empty dictionary in case of errors
 
 async def get_comments(new_ids: list[str]) -> tuple[list[str], list[str]]:
