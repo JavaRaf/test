@@ -7,9 +7,11 @@ async def fetch_comments(session: httpx.AsyncClient, post_id: str, semaphore: as
     url = f'{Data.fb_url}/{post_id}/comments?limit=50&access_token={Data.fb_tok}'
     async with semaphore:
         try:
+            time.sleep(0.5)
             response = await session.get(url, timeout=20)
             response.raise_for_status()
             return response.json()
+            
         except httpx.HTTPStatusError as exc:
             print(f"HTTP error occurred for post_id {post_id}: {exc}")
             time.sleep(10)
