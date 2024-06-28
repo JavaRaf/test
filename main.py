@@ -15,6 +15,9 @@ async def test():
     
     comments_ids, comments = get_post_ids()
     
+    comments_ids.append('136437712888196_122186265332068249')  # id do post fixado sobre download
+    comments.append('post fixado sobre download')
+    
     fim = time.time()
     print(f'Tempo de execução do post_ids foi: {fim - inicio:.2f} segundos\n')
 
