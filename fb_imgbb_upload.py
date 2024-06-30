@@ -5,28 +5,36 @@ from database import Data
 
 
 def imgBB(frame):
-    try:
-        
-        frame_name = frame.replace('.jpg', '')
-        data = {'key': Data.imgbb_tok, 'name': f'{frame_name}', 'expiration': 600000}
+    
+    tentativas = 0
+    vezes = 3
+    
+    while tentativas < vezes:
+        try:
+            frame_name = frame.replace('.jpg', '')
+            data = {'key': Data.imgbb_tok, 'name': f'{frame_name}', 'expiration': 600000}
 
-        with open(f'images/{frame}', 'rb') as file:
-            files = {'image': file}
-            
-            response = httpx.post(Data.img_url, data=data, files=files, timeout=10)
-            if response.status_code == 200:
-                response_data = response.json()
-                link = response_data['data']['url']
-                print('imagem enviada pro o imgbb')
-                return link
+            with open(f'images/{frame}', 'rb') as file:
+                files = {'image': file}
                 
-            else:
-                print('erro no imgbb', response.status_code)
-                print(response.content)
-                return ''
-    except FileNotFoundError:
-        print(f"O arquivo ./images/{frame} não foi encontrado.")
-        return ''
+                response = httpx.post(Data.img_url, data=data, files=files, timeout=10)
+                if response.status_code == 200:
+                    response_data = response.json()
+                    link = response_data['data']['url']
+                    print('imagem enviada pro o imgbb')
+                    return link
+                    
+                else:
+                    print('erro no imgbb', response.status_code)
+                    print(response.content)
+                    
+                    tentativas += 1
+                    
+        except FileNotFoundError:
+            print(f"O arquivo ./images/{frame} não foi encontrado.")
+            return ''
+    
+    return ''
 
 def armazenar_image_fb(path_to_frame: str): 
     try:

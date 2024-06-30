@@ -48,7 +48,7 @@ async def test():
         if captions != '':
             frame = f's{frame}'
 
-            link = imgBB(frame)
+            link = imgBB(frame)  
             foto_id = armazenar_image_fb(frame)
         else:
             link = imgBB(frame)
